@@ -24,7 +24,7 @@ jobs:
     - name: Authenticate npm with the GPR
       uses: ahmadnassri/action-github-registry-npm-proxy@v1.0.3
       with:
-        github-token: ${{ secrets.NPM_TOKEN }}
+        github-token: ${{ secrets.NPM_TOKEN_CI }}
 
     - name: Use npm CI
       run: npm ci
