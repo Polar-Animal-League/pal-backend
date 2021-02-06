@@ -55,7 +55,7 @@ jobs:
         with:
           registry: 'https://docker.pkg.github.com'
           username: 'Polar-Animal-League'
-          password: ${{ secrets.NPM_TOKEN }}
+          password: ${{ secrets.NPM_TOKEN_CI }}
 
       - name: Build and push
         id: docker_build
