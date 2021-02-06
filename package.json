@@ -13,6 +13,7 @@
   },
   "license": "",
   "dependencies": {
+    "@polar-animal-league/shared": "0.0.1",
     "colors": "^1.4.0"
   },
   "devDependencies": {

@@ -19,6 +19,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        
+    - name: Authenticate npm with the GPR
+      uses: aquacash5/npm-gpr-auth@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Use npm CI
       run: npm ci
