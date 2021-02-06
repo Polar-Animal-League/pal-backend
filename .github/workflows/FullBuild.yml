@@ -26,8 +26,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Use npm CI
-      run: npm config set @polar-animal-league:registry '//npm.pkg.github.com/'
-        && npm config set '//npm.pkg.github.com/:_authToken' ${{ secrets.GITHUB_TOKEN }}
+      run: npm config set '//npm.pkg.github.com/:_authToken' ${{ secrets.GITHUB_TOKEN }}
         && npm ci
 
     - name: TypeScript Error Report
