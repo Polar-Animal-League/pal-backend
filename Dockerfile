@@ -3,6 +3,7 @@ ENV NODE_VERSION=~14
 WORKDIR /usr/pal-backend
 RUN apk --update add --no-cache nodejs=${NODE_VERSION} nodejs-npm
 COPY package*.json ./
+COPY .npmrc ./
 RUN npm install --production --no-fund --no-optional --no-audit --ignore-scripts
 
 RUN VERSION_TS=`node -p -e "require('./package.json').devDependencies.typescript"` \
@@ -17,6 +18,7 @@ ENV NODE_VERSION=~14
 WORKDIR /usr/pal-backend
 RUN apk --update add --no-cache nodejs=${NODE_VERSION} nodejs-npm
 COPY package*.json ./
+COPY .npmrc ./
 RUN npm install --production --no-fund --no-optional --no-audit --ignore-scripts
 
 FROM alpine:latest
