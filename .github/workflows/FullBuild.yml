@@ -26,7 +26,8 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Use npm CI
-      run: npm ci
+      run: npm config set '//npm.pkg.github.com/:_authToken' ${{ secrets.GITHUB_TOKEN }}
+        && npm ci
 
     - name: TypeScript Error Report
       uses: andoshin11/typescript-error-reporter-action@v1.0.2
