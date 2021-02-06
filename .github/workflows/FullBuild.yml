@@ -24,7 +24,7 @@ jobs:
     - name: Authenticate npm with the GPR
       uses: ahmadnassri/action-github-registry-npm-proxy@v1.0.3
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.NPM_TOKEN }}
 
     - name: Use npm CI
       run: npm ci
@@ -55,7 +55,7 @@ jobs:
         with:
           registry: 'https://docker.pkg.github.com'
           username: 'Polar-Animal-League'
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.NPM_TOKEN }}
 
       - name: Build and push
         id: docker_build
