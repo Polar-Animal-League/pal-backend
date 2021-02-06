@@ -36,3 +36,33 @@ jobs:
 
     - name: Compile
       run: tsc --diagnostics
+
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1.0.1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1.1.1
+
+      - name: Docker Login
+        uses: docker/login-action@v1.8.0
+        with:
+          registry: 'https://docker.pkg.github.com'
+          username: 'Polar-Animal-League'
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2.2.2
+        with:
+          context: .
+          push: false
+          tags: polar-animal-league/pal-backend:pr
+
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
