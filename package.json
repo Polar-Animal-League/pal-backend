@@ -1,7 +1,8 @@
 {
   "name": "@pal/pal-backend",
   "version": "0.0.1",
-  "main": "dist/app.js",
+  "main": "dist/app",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --ext .ts",
