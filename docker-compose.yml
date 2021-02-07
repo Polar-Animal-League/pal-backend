@@ -11,6 +11,8 @@ services:
       - pal
     depends_on:
       - db
+    ports: 
+      - 8080:8080
 
   db:
     image: postgres:12-alpine

@@ -11,9 +11,9 @@ module.exports = {
       "dist/Models/*.js"
    ],
    "migrations": [
-      "dist/Database/migrations/**/*.ts"
+      "dist/Database/migrations/**/*.js"
    ],
    "subscribers": [
-      "dist/Listeners/**/*.ts"
+      "dist/Listeners/**/*.js"
    ]
 }
