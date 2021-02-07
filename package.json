@@ -1,13 +1,14 @@
 {
   "name": "@pal/pal-backend",
   "version": "0.0.1",
-  "main": "dist/index.js",
+  "main": "dist/app.js",
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --ext .ts",
     "dev:backend": "tsc && cross-conf-env docker-compose up --build app",
     "dev:deps": "cross-conf-env docker-compose up db",
-    "dev:watch": "concurrently --kill-others -n Deps,Backend -c green,blue \"npm run dev:deps\" \"nodemon --watch src -e ts,json --exec \\\"npm run dev:backend\\\"\""
+    "dev:watch": "concurrently --kill-others -n Deps,Backend -c green,blue \"npm run dev:deps\" \"nodemon --watch src -e ts,json --exec \\\"npm run dev:backend\\\"\"",
+    "start": "tsc && node dist/app.js"
   },
   "author": "Micha_i",
   "repository": {
@@ -17,7 +18,12 @@
   "license": "",
   "dependencies": {
     "@polar-animal-league/shared": "0.0.1",
-    "colors": "^1.4.0"
+    "bcrypt": "^5.0.0",
+    "colors": "^1.4.0",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.30"
   },
   "devDependencies": {
     "@types/node": "^14.14.13",
