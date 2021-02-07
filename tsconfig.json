@@ -17,6 +17,7 @@
 
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
 
     "typeRoots": [
       "node_modules/@types",
