@@ -2,18 +2,18 @@ module.exports = {
    "type": "postgres",
    "host": "db",
    "port": process.env.DB_PORT,
-   "username": process.env.POSTGRES_USER,
-   "password": process.env.POSTGRES_PASSWORD,
-   "database": process.env.POSTGRES_DB,
+   "username": process.env.DB_USER,
+   "password": process.env.DB_PASSWORD,
+   "database": process.env.DB_NAME,
    "synchronize": true,
    "logging": false,
    "entities": [
-      "src/Models/*.ts"
+      "dist/Models/*.js"
    ],
    "migrations": [
-      "src/Database/migrations/**/*.ts"
+      "dist/Database/migrations/**/*.ts"
    ],
    "subscribers": [
-      "src/Listeners/**/*.ts"
+      "dist/Listeners/**/*.ts"
    ]
 }

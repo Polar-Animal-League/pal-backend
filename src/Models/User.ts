@@ -1,18 +1,28 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, Index, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, } from "typeorm";
 
 @Entity()
 export class User extends BaseEntity {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
-    @Column()
-    firstName: string;
+    @Column({ length: 32 })
+    @Index({ unique: true })
+    username!: string;
 
-    @Column()
-    lastName: string;
+    @Column({ length: 40 })
+    password!: string;
 
-    @Column()
-    age: number;
+    @Column({ length: 320 })
+    @Index({ unique: true })
+    email!: string;
 
+    @CreateDateColumn()
+    created_at!: Date
+
+    @UpdateDateColumn()
+    updated_at!: Date
+
+    @DeleteDateColumn()
+    deleted_at!: Date
 }

@@ -24,6 +24,10 @@ services:
       - pgsql-volume:/var/lib/postgresql/data:delegated
     networks:
       - pal
+    environment:
+      - POSTGRES_DB=pal
+      - POSTGRES_USER=pal-user
+      - POSTGRES_PASSWORD=123456
 
 volumes:
   pgsql-volume:
