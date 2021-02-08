@@ -4,8 +4,5 @@ services:
       context: .
       args:
         - NPM_TOKEN
-    volumes: 
+    volumes:
       - ./:/usr/pal-backend
-    networks:
-      - pal
-      - host
