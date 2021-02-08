@@ -2,5 +2,7 @@ services:
   app:
     build:
       context: .
+      args:
+        - NPM_TOKEN
     volumes: 
       - ./:/usr/pal-backend

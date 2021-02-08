@@ -1,0 +1,11 @@
+node_modules
+.vscode
+.github
+.eslintignore
+.eslintrc
+.env.template
+.env
+.gitignore
+README.md
+docker-compose.*.yml
+Dockerfile
