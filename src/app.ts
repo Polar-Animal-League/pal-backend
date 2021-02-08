@@ -4,26 +4,28 @@ import userRoutes from "./Routes/user.routes"
 
 const app = express()
 const port = 8080
-const colors = require('colors/safe');
+import * as colors from "colors";
 
 
 app.use(express.json());
-async function start() {
+async function start(): Promise<void> {
 
-    const connections = await createConnections()
-        .then(connection => {
+    await createConnections()
+        .then(() => {
             console.log(colors.green('Database started')); // outputs green text
+
+            app.use('/user', userRoutes);
+
+            app.listen(port, '0.0.0.0', () => {
+                console.log(colors.green(`PAL-backend listening at http://localhost:${port}`))
+            })
+
+
         });
 }
 
-start();
+void start();
 
-
-app.use('/user', userRoutes);
-
-app.listen(port, '0.0.0.0', () => {
-    console.log(colors.green(`PAL-backend listening at http://localhost:${port}`))
-})
 
 
 
