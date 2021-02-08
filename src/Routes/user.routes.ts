@@ -10,28 +10,7 @@ const router = express.Router()
 
 // define the about route
 router.post('/register',
-    body('username').isLength({ min: 3, max: 32 }).custom(async (value) => {
-        return await User.findByName(value).then(user => {
-            if (user) {
-                console.log(`user found with ${user.User.username}`)
-                throw new Error("foo");
 
-            } else {
-                return true
-            }
-        })
-    }),
-    body('password').isStrongPassword().isLength({ max: 16 }),
-    body('email').isEmail().custom(async (value) => {
-        console.log("foobar");
-        return User.findByEmail(value).then(user => {
-            if (user) {
-                return resizeBy
-            } else {
-                return true
-            }
-        })
-    }),
     async (req: Request<unknown, unknown, Requests.RegisterRequest>, res: Response): Promise<Response> => {
         // const errors = validationResult(<Request>req);
         // // basic validation handling, will need to improve error message returns for the FE
