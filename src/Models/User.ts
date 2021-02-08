@@ -17,12 +17,6 @@ export class User extends BaseEntity {
     @Index({ unique: true })
     email!: string;
 
-    @CreateDateColumn()
-    created_at!: Date
-
-    @UpdateDateColumn()
-    updated_at!: Date
-
     @DeleteDateColumn()
     deleted_at!: Date
 

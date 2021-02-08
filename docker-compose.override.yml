@@ -6,3 +6,6 @@ services:
         - NPM_TOKEN
     volumes: 
       - ./:/usr/pal-backend
+    networks:
+      - pal
+      - host

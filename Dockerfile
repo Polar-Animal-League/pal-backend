@@ -36,8 +36,7 @@ RUN addgroup -g 1000 node \
     && apk --update add --no-cache nodejs=${NODE_VERSION}
 
 USER node
+ENTRYPOINT ["node", "."]
 
 COPY --from=buildMODULES usr/pal-backend/ ./
 COPY --from=buildTSC usr/pal-backend/dist ./dist
-
-ENTRYPOINT ["node", "."]
