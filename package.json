@@ -7,9 +7,10 @@
     "build": "tsc",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write \"src/**/*.ts\"",
-    "dev:backend": "tsc && cross-conf-env docker-compose up --build app",
+    "dev:backend": "tsc && env-cmd cross-conf-env docker-compose up --build app ",
     "dev:deps": "cross-conf-env docker-compose up db",
-    "dev:watch": "env-cmd concurrently --kill-others -n Deps,Backend -c green,blue \"npm run dev:deps\" \"nodemon --watch src -e ts,json --exec \\\"npm run dev:backend\\\"\"",
+    "dev:watch": "nodemon --watch src -e ts,json --exec \"npm run dev:backend\"",
+    "dev:docker:watch": "env-cmd concurrently --kill-others -n Deps,Backend -c green,blue \"npm run dev:deps\" \"npm run dev:watch\"",
     "start": "tsc && node dist/app.js"
   },
   "author": "Micha_i",

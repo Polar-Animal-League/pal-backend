@@ -3,8 +3,10 @@ import express from 'express';
 import userRoutes from './Routes/user.routes';
 import chalk from 'chalk';
 
+process.on('SIGINT', () => process.exit(1));
+
 const app = express();
-const port = 8080;
+const port = +(process.env['BACKEND_PORT'] ?? 8080);
 
 app.use(express.json());
 async function start(): Promise<void> {

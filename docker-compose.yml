@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 services:
 
   app:
@@ -12,7 +12,7 @@ services:
     depends_on:
       - db
     ports: 
-      - 8080:8080
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
 
   db:
     image: postgres:12-alpine
@@ -21,15 +21,11 @@ services:
     env_file:
       - .env
     ports:
-      - 5432:5432
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
     volumes:
       - pgsql-volume:/var/lib/postgresql/data:delegated
     networks:
       - pal
-    environment:
-      - POSTGRES_DB=pal
-      - POSTGRES_USER=pal-user
-      - POSTGRES_PASSWORD=123456
 
 volumes:
   pgsql-volume:

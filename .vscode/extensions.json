@@ -5,6 +5,7 @@
         "dbaeumer.vscode-eslint",
         "ms-vscode-remote.remote-wsl",
         "eamodio.gitlens",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "eg2.vscode-npm-script"
     ]
 }
