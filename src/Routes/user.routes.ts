@@ -12,30 +12,22 @@ const router = express.Router()
 router.post('/register',
 
     async (req: Request<unknown, unknown, Requests.RegisterRequest>, res: Response): Promise<Response> => {
-        // const errors = validationResult(<Request>req);
-        // // basic validation handling, will need to improve error message returns for the FE
-        // if (!errors.isEmpty()) {
-        //     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        //     return res.status(400).json({ errors: errors.array() });
-        // }
+        const userExists: User[] = await User.findByEmail(req.body.email)
 
+        if (userExists) {
+            return res.sendConflictResponse("")
+        }
+        const user = new User()
+        user.username = req.body.username
+        user.email = req.body.email
 
-        // const userExists: User[] = await User.findByEmail(req.body.email)
+        const hash: string = await bcryptHash(req.body.password, 10)
 
-        // if (userExists) {
-        //     return res.sendConflictResponse("")
-        // }
-        // const user = new User()
-        // user.username = req.body.username
-        // user.email = req.body.email
+        user.password = hash
 
-        // const hash: string = await bcryptHash(req.body.password, 10)
-
-        // user.password = hash
-
-        // await user.save()
+        await user.save()
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        return res.sendOkResponse("foo");
+        return res.sendOkResponse(user);
     })
 
 // define the about route
