@@ -12,13 +12,6 @@ export class Player extends BaseModel {
     @Column({ length: 32 })
     name!: string;
 
-    @Column({ length: 40 })
-    password!: string;
-
-    @Column({ length: 320 })
-    @Index({ unique: true })
-    email!: string;
-
     @DeleteDateColumn()
     deleted_at!: Date
 }
