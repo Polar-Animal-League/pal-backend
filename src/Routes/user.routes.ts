@@ -12,7 +12,7 @@ const router = express.Router()
 router.post('/register',
 
     async (req: Request<unknown, unknown, Requests.RegisterRequest>, res: Response): Promise<Response> => {
-        const userExists: User[] = await User.findByEmail(req.body.email)
+        const userExists: User | undefined = await User.findByEmail(req.body.email)
 
         if (userExists) {
             return res.sendConflictResponse("")
