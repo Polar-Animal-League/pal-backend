@@ -4,6 +4,7 @@
         "ms-azuretools.vscode-docker",
         "dbaeumer.vscode-eslint",
         "ms-vscode-remote.remote-wsl",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode"
     ]
 }
