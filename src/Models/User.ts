@@ -47,4 +47,11 @@ export class User extends BaseEntity {
 
         return false
     }
+
+    constructor(username: string, password: string, email: string) {
+        super();
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 }

@@ -27,4 +27,8 @@ export class BaseModel extends BaseEntity {
     beforeUpdate() {
         this.updatedAt = new Date();
     }
+
+    constructor() {
+        super();
+    }
 }

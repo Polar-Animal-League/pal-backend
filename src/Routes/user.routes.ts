@@ -17,13 +17,10 @@ router.post('/register',
         if (userExists) {
             return res.sendConflictResponse("")
         }
-        const user = new User()
-        user.username = req.body.username
-        user.email = req.body.email
 
         const hash: string = await bcryptHash(req.body.password, 10)
 
-        user.password = hash
+        const user = new User(req.body.username, hash, req.body.email)
 
         await user.save()
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call

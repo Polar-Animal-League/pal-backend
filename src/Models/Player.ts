@@ -14,4 +14,10 @@ export class Player extends BaseModel {
 
     @DeleteDateColumn()
     deleted_at!: Date
+
+    constructor(user: User, name: string) {
+        super();
+        this.user = user;
+        this.name = name;
+    }
 }
