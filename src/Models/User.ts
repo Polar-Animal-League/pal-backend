@@ -1,18 +1,12 @@
 import {
     Entity,
-    PrimaryGeneratedColumn,
     Column,
-    BaseEntity,
     Index,
-    CreateDateColumn,
-    UpdateDateColumn,
-    DeleteDateColumn
 } from 'typeorm';
+import { BaseModel } from './BaseModel';
 
 @Entity()
-export class User extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    id!: number;
+export class User extends BaseModel {
 
     @Column({ length: 32 })
     @Index({ unique: true })
@@ -24,9 +18,6 @@ export class User extends BaseEntity {
     @Column({ length: 320 })
     @Index({ unique: true })
     email!: string;
-
-    @DeleteDateColumn()
-    deleted_at!: Date;
 
     public static async findByEmail(email: string): Promise<User | undefined> {
         return await User.findOne({ where: { email: email } });

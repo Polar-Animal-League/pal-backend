@@ -4,7 +4,8 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     BeforeInsert,
-    BeforeUpdate
+    BeforeUpdate,
+    DeleteDateColumn
 } from 'typeorm';
 
 export class BaseModel extends BaseEntity {
@@ -22,6 +23,12 @@ export class BaseModel extends BaseEntity {
         type: 'timestamp'
     })
     updatedAt: Date;
+
+    @DeleteDateColumn({
+        name: 'deleted_at',
+        type: 'timestamp'
+    })
+    deleted_at: Date;
 
     @BeforeInsert()
     beforeInsert() {
