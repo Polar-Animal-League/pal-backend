@@ -4,8 +4,8 @@ import '@polar-animal-league/shared/dist/types/express';
 import { Requests } from '@polar-animal-league/shared/dist/requests';
 import * as express from 'express';
 import { hash as bcryptHash } from 'bcryptjs';
-import { body, validationResult } from 'express-validator';
 import { User } from '../Models/User';
+import { JWTHelper } from "../Helpers/JWTHelper"
 const router = express.Router();
 
 // define the about route
@@ -28,7 +28,7 @@ router.post(
 
         await user.save();
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        return res.sendOkResponse(user);
+        return res.sendOkResponse({ "user_id": user.id, "token": await JWTHelper.generateToken(user.id) });
     }
 );
 

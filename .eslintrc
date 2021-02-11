@@ -47,7 +47,6 @@
       "@typescript-eslint/no-implied-eval": 2,
 
       "brace-style": "off",
-      "@typescript-eslint/brace-style": [1, "stroustrup", { "allowSingleLine": true }],
 
       "@typescript-eslint/promise-function-async": 1,
       "@typescript-eslint/no-empty-interface": 1,
