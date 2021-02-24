@@ -2,7 +2,7 @@ import { Response } from "express";
 
 export default class JsonResponse {
 
-    public static success(res: Response, data: unknown, message?: string | null): Response {
+    public static success(res: Response, data: unknown, message?: string): Response {
         return res.json({
             status: 200,
             message: message || "Success",

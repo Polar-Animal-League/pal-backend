@@ -1,12 +1,12 @@
-import { Request } from 'express';
-import { Response } from 'express';
+import { Request, NextFunction, Response, Router } from 'express';
 import '@polar-animal-league/shared/dist/types/express';
 import { Requests } from '@polar-animal-league/shared/dist/requests';
-import * as express from 'express';
 import { hash as bcryptHash } from 'bcryptjs';
 import { User } from '../Models/User';
 import JsonResponse from '../Utils/JsonResponse';
-const router = express.Router();
+import ConflictException from "../Exceptions/ConflictException"
+
+const router = Router();
 
 // define the about route
 router.post(
@@ -14,12 +14,14 @@ router.post(
 
     async (
         req: Request<unknown, unknown, Requests.RegisterRequest>,
-        res: Response
+        res: Response,
+        next: NextFunction
     ): Promise<Response> => {
         const userExists: User | undefined = await User.findByEmail(req.body.email);
 
         if (userExists) {
-            return JsonResponse.error(res, 409, '');
+            // eslint-disable-next-line
+            return <Response><unknown>next(new ConflictException());
         }
 
         const hash: string = await bcryptHash(req.body.password, 10);
