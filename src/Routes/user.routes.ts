@@ -4,8 +4,8 @@ import '@polar-animal-league/shared/dist/types/express';
 import { Requests } from '@polar-animal-league/shared/dist/requests';
 import * as express from 'express';
 import { hash as bcryptHash } from 'bcryptjs';
-import { body, validationResult } from 'express-validator';
 import { User } from '../Models/User';
+import JsonResponse from '../Utils/JsonResponse';
 const router = express.Router();
 
 // define the about route
@@ -19,7 +19,7 @@ router.post(
         const userExists: User | undefined = await User.findByEmail(req.body.email);
 
         if (userExists) {
-            return res.sendConflictResponse('');
+            return JsonResponse.error(res, 409, '');
         }
 
         const hash: string = await bcryptHash(req.body.password, 10);
@@ -27,8 +27,8 @@ router.post(
         const user = new User(req.body.username, hash, req.body.email);
 
         await user.save();
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        return res.sendOkResponse(user);
+
+        return JsonResponse.success(res, user);
     }
 );
 
