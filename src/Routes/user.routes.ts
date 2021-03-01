@@ -28,7 +28,13 @@ router.post(
 
         await user.save();
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        return res.sendOkResponse({ "user_id": user.id, "token": await JWTHelper.generateToken(user.id) });
+        const dataToReturn = {
+            user_id: user.id,
+            email: user.email,
+            token: await JWTHelper.generateToken(user.id)
+        }
+
+        return res.cookie('user', JSON.stringify(dataToReturn)).sendOkResponse("");
     }
 );
 
