@@ -2,11 +2,10 @@ import { createConnections } from 'typeorm';
 import express from 'express';
 import userRoutes from './Routes/user.routes';
 import chalk from 'chalk';
-import { Request, Response } from "express";
 import cors from "cors"
 
 const app = express();
-const port = 8080;
+const port = 3000;
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call
 app.use(cors());
