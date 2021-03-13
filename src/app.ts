@@ -5,7 +5,7 @@ import chalk from 'chalk';
 import cors from "cors"
 
 const app = express();
-const port = 8000;
+const port = 8080;
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call
 app.use(cors());
@@ -21,10 +21,6 @@ async function start(): Promise<void> {
         });
     });
 }
-
-// app.use(function (req: Request, res: Response, next) {
-
-// })
 
 app.use('/user', userRoutes);
 
